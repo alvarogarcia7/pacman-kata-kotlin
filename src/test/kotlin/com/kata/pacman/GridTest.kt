@@ -7,17 +7,8 @@ import org.junit.Test
 class GridTest {
 
     @Test
-    fun `moving to the right changes the position of the pacman_2`() {
-        movePacman(at(0, 0), facing(RIGHT), endsUp(at(1,0)))
-    }
-
-    @Test
     fun `moving to the right changes the position of the pacman`() {
-        val pacman = Pacman(Position(0,0), RIGHT)
-
-        pacman.move()
-
-        assertEquals(pacman.position(), Position(1,0))
+        movePacman(at(0, 0), facing(RIGHT), endsUp(at(1,0)))
     }
 
     @Test
