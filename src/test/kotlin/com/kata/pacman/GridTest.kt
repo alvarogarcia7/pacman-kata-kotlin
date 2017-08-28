@@ -1,6 +1,6 @@
 package com.kata.pacman
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class GridTest {
@@ -18,12 +18,9 @@ class GridTest {
 
 enum class Direction {
     RIGHT
-
 }
 
-class Position(x: Int, y: Int) {
-
-}
+data class Position(var x: Int, var y: Int)
 
 class Grid(dimension: Dimension, pacman: Pacman) {
 
@@ -34,14 +31,18 @@ class Dimension(x: Int, y: Int) {
 }
 
 class Pacman {
-    constructor(position: Position,  direction: Direction)
+    private var position: Position
+
+    constructor(position: Position, direction: Direction) {
+        this.position = position
+    }
 
     fun moveRight() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        position.x++
     }
 
     fun position(): Position {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return position
     }
 
 }
