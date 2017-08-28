@@ -8,9 +8,8 @@ class GridTest {
     @Test
     fun `moving to the right changes the position of the pacman`() {
         val pacman = Pacman(Position(0,0), Direction.RIGHT)
-        val grid = Grid(Dimension(2,1),  pacman)
 
-        pacman.moveRight()
+        pacman.move()
 
         assertEquals(pacman.position(), Position(1,0))
     }
@@ -37,7 +36,7 @@ class Pacman {
         this.position = position
     }
 
-    fun moveRight() {
+    fun move() {
         position.x++
     }
 
