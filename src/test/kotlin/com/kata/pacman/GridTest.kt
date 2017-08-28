@@ -11,20 +11,6 @@ class GridTest {
         movePacman(at(0, 0), facing(RIGHT), endsUp(at(1,0)))
     }
 
-    private fun endsUp(value: Position): Position = value
-
-    private fun facing(value: Direction): Direction = value
-
-    private fun  at(x: Int, y: Int): Position = Position(x,y)
-
-    private fun movePacman(at: Position, facing: Direction, endsUpAt: Position) {
-        val pacman = Pacman(at, facing)
-
-        pacman.move()
-
-        assertEquals(pacman.position(), endsUpAt)
-    }
-
     @Test
     fun `moving to the right changes the position of the pacman`() {
         val pacman = Pacman(Position(0,0), RIGHT)
@@ -59,6 +45,20 @@ class GridTest {
         pacman.move()
 
         assertEquals(pacman.position(), Position(0,-1))
+    }
+
+    private fun endsUp(value: Position): Position = value
+
+    private fun facing(value: Direction): Direction = value
+
+    private fun  at(x: Int, y: Int): Position = Position(x,y)
+
+    private fun movePacman(at: Position, facing: Direction, endsUpAt: Position) {
+        val pacman = Pacman(at, facing)
+
+        pacman.move()
+
+        assertEquals(pacman.position(), endsUpAt)
     }
 }
 
