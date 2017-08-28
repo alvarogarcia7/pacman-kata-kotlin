@@ -16,10 +16,21 @@ class GridTest {
 }
 
 enum class Direction {
-    RIGHT
+    RIGHT {
+        override fun move(): Position {
+            return Position(1,0)
+        }
+    };
+
+    abstract fun move() : Position
 }
 
-data class Position(var x: Int, var y: Int)
+data class Position(var x: Int, var y: Int) {
+    fun add(move: Position) {
+        this.x += move.x
+        this.y += move.y
+    }
+}
 
 class Grid(dimension: Dimension, pacman: Pacman) {
 
@@ -31,13 +42,15 @@ class Dimension(x: Int, y: Int) {
 
 class Pacman {
     private var position: Position
+    private var direction: Direction
 
     constructor(position: Position, direction: Direction) {
         this.position = position
+        this.direction = direction
     }
 
     fun move() {
-        position.x++
+        position.add(direction.move())
     }
 
     fun position(): Position {
