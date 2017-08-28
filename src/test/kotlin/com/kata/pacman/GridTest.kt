@@ -22,12 +22,26 @@ class GridTest {
 
         assertEquals(pacman.position(), Position(0,0))
     }
+    @Test
+    fun `facing up changes the position of the pacman`() {
+        val pacman = Pacman(Position(0,0), Direction.UP)
+
+        pacman.move()
+
+        assertEquals(pacman.position(), Position(0,1))
+    }
 }
 
 enum class Direction {
     LEFT {
         override fun move(): Position {
             return Position(-1,0)
+        }
+    },
+
+    UP {
+        override fun move(): Position {
+            return Position(0,1)
         }
     },
 
