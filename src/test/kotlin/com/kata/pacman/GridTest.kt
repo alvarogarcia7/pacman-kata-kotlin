@@ -1,13 +1,33 @@
 package com.kata.pacman
 
+import com.kata.pacman.Direction.*
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class GridTest {
 
     @Test
+    fun `moving to the right changes the position of the pacman_2`() {
+        movePacman(at(0, 0), facing(RIGHT), endsUp(at(1,0)))
+    }
+
+    private fun endsUp(value: Position): Position = value
+
+    private fun facing(value: Direction): Direction = value
+
+    private fun  at(x: Int, y: Int): Position = Position(x,y)
+
+    private fun movePacman(at: Position, facing: Direction, endsUpAt: Position) {
+        val pacman = Pacman(at, facing)
+
+        pacman.move()
+
+        assertEquals(pacman.position(), endsUpAt)
+    }
+
+    @Test
     fun `moving to the right changes the position of the pacman`() {
-        val pacman = Pacman(Position(0,0), Direction.RIGHT)
+        val pacman = Pacman(Position(0,0), RIGHT)
 
         pacman.move()
 
@@ -16,7 +36,7 @@ class GridTest {
 
     @Test
     fun `facing to the left changes the position of the pacman`() {
-        val pacman = Pacman(Position(1,0), Direction.LEFT)
+        val pacman = Pacman(Position(1,0), LEFT)
 
         pacman.move()
 
@@ -25,7 +45,7 @@ class GridTest {
 
     @Test
     fun `facing up changes the position of the pacman`() {
-        val pacman = Pacman(Position(0,0), Direction.UP)
+        val pacman = Pacman(Position(0,0), UP)
 
         pacman.move()
 
@@ -34,7 +54,7 @@ class GridTest {
 
     @Test
     fun `facing down changes the position of the pacman`() {
-        val pacman = Pacman(Position(0,0), Direction.DOWN)
+        val pacman = Pacman(Position(0,0), DOWN)
 
         pacman.move()
 
