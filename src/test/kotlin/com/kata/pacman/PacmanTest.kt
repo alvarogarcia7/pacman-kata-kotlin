@@ -6,6 +6,8 @@ import org.junit.Test
 
 class PacmanTest {
 
+    private val any_position: Position = at(0,0)
+
     @Test
     fun `moving to the right changes the position of the pacman`() {
         movePacman(at(0, 0), facing(RIGHT), endsUp(at(1,0)))
@@ -28,7 +30,7 @@ class PacmanTest {
 
     @Test
     fun `turning to any direction changes the direction of the pacman`() {
-        setNewPacmanDirection(at(0, 0), facing(RIGHT), newDirection(LEFT))
+        setNewPacmanDirection(any_position, newDirection(LEFT), endsUp(facing(LEFT)))
     }
 
     private fun  newDirection(value: Direction): Direction = value
@@ -50,6 +52,7 @@ class PacmanTest {
     }
 
     private fun endsUp(value: Position): Position = value
+    private fun endsUp(value: Direction): Direction = value
 
     private fun facing(value: Direction): Direction = value
 
