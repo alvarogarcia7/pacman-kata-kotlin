@@ -4,7 +4,7 @@ import com.kata.pacman.Direction.*
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class GridTest {
+class PacmanTest {
 
     @Test
     fun `moving to the right changes the position of the pacman`() {
