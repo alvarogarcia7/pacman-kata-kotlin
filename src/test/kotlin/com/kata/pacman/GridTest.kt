@@ -23,11 +23,7 @@ class GridTest {
 
     @Test
     fun `facing down changes the position of the pacman`() {
-        val pacman = Pacman(Position(0,0), DOWN)
-
-        pacman.move()
-
-        assertEquals(pacman.position(), Position(0,-1))
+        movePacman(at(0, 0), facing(DOWN), endsUp(at(0,-1)))
     }
 
     private fun endsUp(value: Position): Position = value
