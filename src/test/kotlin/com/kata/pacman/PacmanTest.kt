@@ -26,6 +26,21 @@ class PacmanTest {
         movePacman(at(0, 0), facing(DOWN), endsUp(at(0,-1)))
     }
 
+    @Test
+    fun `turning to any direction changes the direction of the pacman`() {
+        setNewPacmanDirection(at(0, 0), facing(RIGHT), newDirection(LEFT))
+    }
+
+    private fun  newDirection(value: Direction): Direction = value
+
+    private fun setNewPacmanDirection(at: Position, originalDirection: Direction, newDirection: Direction) {
+        val pacman = Pacman(at, originalDirection)
+
+        pacman.face(newDirection)
+
+        assertEquals(pacman.facing(), newDirection)
+    }
+
     private fun endsUp(value: Position): Position = value
 
     private fun facing(value: Direction): Direction = value

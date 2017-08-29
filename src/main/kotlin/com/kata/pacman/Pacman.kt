@@ -60,4 +60,12 @@ class Pacman {
         return position
     }
 
+    fun  face(newDirection: Direction) {
+        this.direction = newDirection
+    }
+
+    fun facing(): Direction {
+        return direction
+    }
+
 }
