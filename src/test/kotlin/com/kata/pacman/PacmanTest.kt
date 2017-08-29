@@ -51,8 +51,7 @@ class PacmanTest {
         assertEquals(pacman.facing(), newDirection)
     }
 
-    private fun endsUp(value: Position): Position = value
-    private fun endsUp(value: Direction): Direction = value
+    private fun <T> endsUp(value: T): T = value
 
     private fun facing(value: Direction): Direction = value
 
