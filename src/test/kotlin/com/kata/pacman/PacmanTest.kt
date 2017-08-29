@@ -33,6 +33,14 @@ class PacmanTest {
 
     private fun  newDirection(value: Direction): Direction = value
 
+    private fun movePacman(at: Position, facing: Direction, endsUpAt: Position) {
+        val pacman = Pacman(at, facing)
+
+        pacman.move()
+
+        assertEquals(pacman.position(), endsUpAt)
+    }
+
     private fun setNewPacmanDirection(at: Position, originalDirection: Direction, newDirection: Direction) {
         val pacman = Pacman(at, originalDirection)
 
@@ -46,14 +54,6 @@ class PacmanTest {
     private fun facing(value: Direction): Direction = value
 
     private fun  at(x: Int, y: Int): Position = Position(x,y)
-
-    private fun movePacman(at: Position, facing: Direction, endsUpAt: Position) {
-        val pacman = Pacman(at, facing)
-
-        pacman.move()
-
-        assertEquals(pacman.position(), endsUpAt)
-    }
 }
 
 
