@@ -6,6 +6,9 @@ import org.junit.Test
 
 class PacmanTest {
 
+    // function as an alias. Taken from https://opencredo.com/the-destructor-pattern/
+    private val at = ::Position
+
     private val any_position: Position = at(0,0)
 
     @Test
@@ -55,7 +58,6 @@ class PacmanTest {
 
     private fun facing(value: Direction): Direction = value
 
-    private fun  at(x: Int, y: Int): Position = Position(x,y)
 }
 
 
