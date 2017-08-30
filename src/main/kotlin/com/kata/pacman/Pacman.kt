@@ -43,10 +43,11 @@ data class Position(var x: Int, var y: Int) {
 class Grid(val dimension: Dimension) {
 
     fun  simplify(position: Position): Position {
+        var result = position
         if(position.atOrPastTheX(dimension.x)){
-            return decreaseXAxis(position)
+            result = decreaseXAxis(position)
         }
-        return position
+        return result
     }
 
     private fun decreaseXAxis(position: Position): Position {
