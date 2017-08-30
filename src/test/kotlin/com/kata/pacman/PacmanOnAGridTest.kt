@@ -1,6 +1,7 @@
 package com.kata.pacman
 
 import org.junit.Assert
+import org.junit.Ignore
 import org.junit.Test
 
 class PacmanOnAGridTest {
@@ -29,8 +30,15 @@ class PacmanOnAGridTest {
     }
 
     @Test
+    @Ignore
     fun `wrap the position - from topmost to bottommost`() {
         movePacman(at(0, 0), facing(Direction.UP), endsUp(at(0,1)))
+    }
+
+    @Test
+    @Ignore
+    fun `wrap the position - from bottommost to topmost`() {
+        movePacman(at(0, 1), facing(Direction.DOWN), endsUp(at(0,0)))
     }
 
     private fun movePacman(at: Position, facing: Direction, endsUpAt: Position) {
