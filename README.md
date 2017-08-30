@@ -21,7 +21,7 @@
 
 ## Order of implementation
 
-  * small grid, no monsters, dots, move the pacman
+  * MVP: small grid, no monsters, dots, move the pacman
   * add monsters (without bonus)
   * add bonus (to kill monsters)
   * add more monsters
