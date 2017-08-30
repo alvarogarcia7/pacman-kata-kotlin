@@ -8,6 +8,7 @@ class PacmanTest {
 
     // function as an alias. Taken from https://opencredo.com/the-destructor-pattern/
     private val at = ::Position
+    private val grid: Grid = Grid(Dimension(0,0))
 
     private val any_position: Position = at(0,0)
 
@@ -38,8 +39,9 @@ class PacmanTest {
 
     private fun  newDirection(value: Direction): Direction = value
 
+
     private fun movePacman(at: Position, facing: Direction, endsUpAt: Position) {
-        val pacman = Pacman(at, facing)
+        val pacman = Pacman(at, facing, grid)
 
         pacman.move()
 
@@ -47,7 +49,7 @@ class PacmanTest {
     }
 
     private fun setNewPacmanDirection(at: Position, originalDirection: Direction, newDirection: Direction) {
-        val pacman = Pacman(at, originalDirection)
+        val pacman = Pacman(at, originalDirection, grid)
 
         pacman.face(newDirection)
 

@@ -35,7 +35,7 @@ data class Position(var x: Int, var y: Int) {
     }
 }
 
-class Grid(dimension: Dimension, pacman: Pacman) {
+class Grid(dimension: Dimension) {
 
 }
 
@@ -47,7 +47,7 @@ class Pacman {
     private var position: Position
     private var direction: Direction
 
-    constructor(position: Position, direction: Direction) {
+    constructor(position: Position, direction: Direction, grid: Grid) {
         this.position = position
         this.direction = direction
     }
