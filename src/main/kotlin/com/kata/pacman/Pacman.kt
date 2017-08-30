@@ -50,8 +50,7 @@ class Grid(val dimension: Dimension) {
         var result = position
         if(position.beforeTheX()){
             result = increaseXAxis(position)
-        }
-        if(position.atOrPastTheX(dimension.x)){
+        } else if(position.atOrPastTheX(dimension.x)){
             result = decreaseXAxis(position)
         }
         if(position.beforeTheY()){
