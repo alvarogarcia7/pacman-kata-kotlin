@@ -48,17 +48,17 @@ class Grid(val dimension: Dimension) {
 
     fun  simplify(position: Position): Position {
         var result = position
-        if(position.atOrPastTheX(dimension.x)){
-            result = decreaseXAxis(position)
-        }
         if(position.beforeTheX()){
             result = increaseXAxis(position)
         }
-        if(position.atOrPastTheY(dimension.y)){
-            result = decreaseYAxis(position)
+        if(position.atOrPastTheX(dimension.x)){
+            result = decreaseXAxis(position)
         }
         if(position.beforeTheY()){
             result = increaseYAxis(position)
+        }
+        if(position.atOrPastTheY(dimension.y)){
+            result = decreaseYAxis(position)
         }
         return result
     }
