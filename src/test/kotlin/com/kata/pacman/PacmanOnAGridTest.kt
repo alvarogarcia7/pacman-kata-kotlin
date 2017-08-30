@@ -28,6 +28,11 @@ class PacmanOnAGridTest {
         movePacman(at(-1, 0), facing(Direction.LEFT), endsUp(at(-1-1+2 /*moves to the left, then wraps*/,0)))
     }
 
+    @Test
+    fun `wrap the position - from topmost to bottommost`() {
+        movePacman(at(0, 0), facing(Direction.UP), endsUp(at(0,1)))
+    }
+
     private fun movePacman(at: Position, facing: Direction, endsUpAt: Position) {
         var grid = Grid(Dimension(2, 2))
         val pacman = Pacman(at, facing, grid)
