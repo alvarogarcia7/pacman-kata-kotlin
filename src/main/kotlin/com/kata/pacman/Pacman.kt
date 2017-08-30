@@ -39,8 +39,9 @@ data class Position(var x: Int, var y: Int) {
         return this.x >= threshold
     }
 
-    fun beforeTheX(threshold: Int): Boolean = this.x < threshold
+    fun beforeTheX(threshold: Int): Boolean = this.x < 0
     fun atOrPastTheY(threshold: Int): Boolean = this.y >= threshold
+    fun beforeTheY(threshold: Int): Boolean = this.y < 0
 }
 
 class Grid(val dimension: Dimension) {
@@ -56,8 +57,13 @@ class Grid(val dimension: Dimension) {
         if(position.atOrPastTheY(dimension.y)){
             result = decreaseYAxis(position)
         }
+        if(position.beforeTheY(dimension.y)){
+            result = increaseYAxis(position)
+        }
         return result
     }
+
+    private fun  increaseYAxis(position: Position): Position = position.copy(y = position.y + dimension.y)
 
     private fun decreaseYAxis(position: Position): Position = position.copy(y = position.y - dimension.y)
 
