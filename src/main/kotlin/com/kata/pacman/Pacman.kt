@@ -29,31 +29,48 @@ enum class Direction {
 }
 
 data class Position(var x: Int, var y: Int) {
-    fun add(move: Position) {
+    fun add(move: Position): Position {
         this.x += move.x
         this.y += move.y
+        return this
     }
 }
 
-class Grid(dimension: Dimension) {
+class Grid(val dimension: Dimension) {
+
+    fun  simplify(position: Position): Position {
+        if(atXAxisBoundary(position)){
+            return resetXAxis(position)
+        }
+        return position
+    }
+
+    private fun resetXAxis(position: Position): Position {
+        return position.copy(x=0)
+    }
+
+    private fun atXAxisBoundary(position: Position): Boolean = dimension.sameX(position.x)
 
 }
 
-class Dimension(x: Int, y: Int) {
+class Dimension(val x: Int, val y: Int) {
+    fun  sameX(otherX: Int): Boolean = x == otherX
 
 }
 
 class Pacman {
     private var position: Position
     private var direction: Direction
+    private var grid: Grid
 
     constructor(position: Position, direction: Direction, grid: Grid) {
         this.position = position
         this.direction = direction
+        this.grid = grid
     }
 
     fun move() {
-        position.add(direction.move())
+        position = grid.simplify(position.add(direction.move()))
     }
 
     fun position(): Position {

@@ -10,7 +10,7 @@ class PacmanOnAGridTest {
 
     @Test
     fun `wrap the position - from rightmost to leftmost`() {
-        movePacman(at(2, 0), facing(Direction.RIGHT), endsUp(at(0,0)))
+        movePacman(at(1, 0), facing(Direction.RIGHT), endsUp(at(0,0)))
     }
 
     private fun movePacman(at: Position, facing: Direction, endsUpAt: Position) {
