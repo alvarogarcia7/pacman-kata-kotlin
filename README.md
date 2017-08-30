@@ -18,3 +18,12 @@
   	* level
   	* score
   	* max_score
+
+## Order of implementation
+
+  * small grid, no monsters, dots, move the pacman
+  * add monsters (without bonus)
+  * add bonus (to kill monsters)
+  * add more monsters
+  * add walls
+  * statistics
