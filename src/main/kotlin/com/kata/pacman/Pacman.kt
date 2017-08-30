@@ -39,17 +39,17 @@ data class Position(var x: Int, var y: Int) {
 class Grid(val dimension: Dimension) {
 
     fun  simplify(position: Position): Position {
-        if(atXAxisBoundary(position)){
-            return resetXAxis(position)
+        if(atOrPastTheXAxisBoundary(position)){
+            return decreaseXAxis(position)
         }
         return position
     }
 
-    private fun resetXAxis(position: Position): Position {
-        return position.copy(x=0)
+    private fun decreaseXAxis(position: Position): Position {
+        return position.copy(x = position.x - dimension.x)
     }
 
-    private fun atXAxisBoundary(position: Position): Boolean = dimension.sameX(position.x)
+    private fun atOrPastTheXAxisBoundary(position: Position): Boolean = position.x >= dimension.x
 
 }
 
