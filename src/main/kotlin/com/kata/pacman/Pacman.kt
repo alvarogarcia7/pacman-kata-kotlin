@@ -34,6 +34,10 @@ data class Position(var x: Int, var y: Int) {
         this.y += move.y
         return this
     }
+
+    fun atOrPastTheX(threshold: Int): Boolean {
+        return this.x >= threshold
+    }
 }
 
 class Grid(val dimension: Dimension) {
@@ -49,13 +53,11 @@ class Grid(val dimension: Dimension) {
         return position.copy(x = position.x - dimension.x)
     }
 
-    private fun atOrPastTheXAxisBoundary(position: Position): Boolean = position.x >= dimension.x
+    private fun atOrPastTheXAxisBoundary(position: Position): Boolean = position.atOrPastTheX(dimension.x)
 
 }
 
 class Dimension(val x: Int, val y: Int) {
-    fun  sameX(otherX: Int): Boolean = x == otherX
-
 }
 
 class Pacman {
