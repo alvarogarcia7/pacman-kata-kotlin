@@ -56,14 +56,16 @@ class Grid(val dimension: Dimension) {
             }
             return position
         }
-        
-        if(position.beforeTheY()){
-            result = increaseYAxis(position)
-        } else if(position.atOrPastTheY(dimension.y)){
-            result = decreaseYAxis(position)
+
+        fun wrapY(position: Position, threshold: Int) : Position {
+            if (position.beforeTheY()) {
+                return increaseYAxis(position)
+            } else if (position.atOrPastTheY(threshold)) {
+                return decreaseYAxis(position)
+            }
+            return position
         }
-        return wrapX(result, dimension.x)
-        return result
+        return wrapY(wrapX(result, dimension.x), dimension.y)
     }
 
     private fun  increaseYAxis(position: Position): Position = position.copy(y = position.y + dimension.y)
