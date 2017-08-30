@@ -43,7 +43,7 @@ data class Position(var x: Int, var y: Int) {
 class Grid(val dimension: Dimension) {
 
     fun  simplify(position: Position): Position {
-        if(atOrPastTheXAxisBoundary(position)){
+        if(position.atOrPastTheX(dimension.x)){
             return decreaseXAxis(position)
         }
         return position
@@ -52,8 +52,6 @@ class Grid(val dimension: Dimension) {
     private fun decreaseXAxis(position: Position): Position {
         return position.copy(x = position.x - dimension.x)
     }
-
-    private fun atOrPastTheXAxisBoundary(position: Position): Boolean = position.atOrPastTheX(dimension.x)
 
 }
 
