@@ -55,8 +55,7 @@ class Grid(val dimension: Dimension) {
         }
         if(position.beforeTheY()){
             result = increaseYAxis(position)
-        }
-        if(position.atOrPastTheY(dimension.y)){
+        } else if(position.atOrPastTheY(dimension.y)){
             result = decreaseYAxis(position)
         }
         return result
