@@ -27,10 +27,11 @@ data class Position(var x: Int, var y: Int) {
         return this
     }
 
-    fun atOrPastTheX(threshold: Int): Boolean = this.x >= threshold
     fun beforeTheX(): Boolean = this.x < 0
-    fun atOrPastTheY(threshold: Int): Boolean = this.y >= threshold
+    fun atOrPastTheX(threshold: Int): Boolean = this.x >= threshold
+    
     fun beforeTheY(): Boolean = this.y < 0
+    fun atOrPastTheY(threshold: Int): Boolean = this.y >= threshold
 }
 
 class Grid(val dimension: Dimension) {
