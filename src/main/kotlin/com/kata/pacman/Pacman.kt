@@ -66,8 +66,7 @@ class Grid(val dimension: Dimension) {
     private fun increaseYAxis(position: Position): Position = position.copy(y = position.y + dimension.y)
 }
 
-class Dimension(val x: Int, val y: Int) {
-}
+class Dimension(val x: Int, val y: Int)
 
 class Pacman(private var position: Position, private var direction: Direction, private var grid: Grid) {
 
