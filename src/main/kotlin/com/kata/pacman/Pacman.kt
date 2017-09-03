@@ -58,14 +58,12 @@ class Grid(val dimension: Dimension) {
         return wrapY(wrapX(result, dimension.x), dimension.y)
     }
 
-    private fun  increaseYAxis(position: Position): Position = position.copy(y = position.y + dimension.y)
-
-    private fun decreaseYAxis(position: Position): Position = position.copy(y = position.y - dimension.y)
-
-    private fun increaseXAxis(position: Position): Position = position.copy(x = position.x + dimension.x)
 
     private fun decreaseXAxis(position: Position): Position = position.copy(x = position.x - dimension.x)
+    private fun increaseXAxis(position: Position): Position = position.copy(x = position.x + dimension.x)
 
+    private fun decreaseYAxis(position: Position): Position = position.copy(y = position.y - dimension.y)
+    private fun increaseYAxis(position: Position): Position = position.copy(y = position.y + dimension.y)
 }
 
 class Dimension(val x: Int, val y: Int) {
