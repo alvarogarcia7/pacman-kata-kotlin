@@ -69,16 +69,7 @@ class Grid(val dimension: Dimension) {
 class Dimension(val x: Int, val y: Int) {
 }
 
-class Pacman {
-    private var position: Position
-    private var direction: Direction
-    private var grid: Grid
-
-    constructor(position: Position, direction: Direction, grid: Grid) {
-        this.position = position
-        this.direction = direction
-        this.grid = grid
-    }
+class Pacman(private var position: Position, private var direction: Direction, private var grid: Grid) {
 
     fun move() {
         position = grid.simplify(position.add(direction.move()))
