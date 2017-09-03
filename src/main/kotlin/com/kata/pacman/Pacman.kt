@@ -2,27 +2,19 @@ package com.kata.pacman
 
 enum class Direction {
     LEFT {
-        override fun move(): Position {
-            return Position(-1,0)
-        }
+        override fun move(): Position = Position(-1,0)
     },
 
     UP {
-        override fun move(): Position {
-            return Position(0,1)
-        }
+        override fun move(): Position = Position(0,1)
     },
 
     DOWN {
-        override fun move(): Position {
-            return Position(0,-1)
-        }
+        override fun move(): Position = Position(0,-1)
     },
 
     RIGHT {
-        override fun move(): Position {
-            return Position(1,0)
-        }
+        override fun move(): Position = Position(1,0)
     };
 
     abstract fun move() : Position
