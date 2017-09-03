@@ -84,16 +84,12 @@ class Pacman {
         position = grid.simplify(position.add(direction.move()))
     }
 
-    fun position(): Position {
-        return position
-    }
+    fun position(): Position = position
 
     fun  face(newDirection: Direction) {
         this.direction = newDirection
     }
 
-    fun facing(): Direction {
-        return direction
-    }
+    fun facing(): Direction = direction
 
 }
