@@ -35,7 +35,6 @@ class PacmanOnAGridTest {
     }
 
     @Test
-    @Ignore
     fun `wrap the position - from bottommost to topmost`() {
         movePacman(at(0, 1), facing(Direction.DOWN), endsUp(at(0,0)))
     }
