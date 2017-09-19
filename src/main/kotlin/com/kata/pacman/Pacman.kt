@@ -73,17 +73,19 @@ class Grid(val dimension: Dimension) {
 
     fun representation(): Array<String> {
 
-        val x =(0).rangeTo(dimension.x-1).map(fun(row:Int): String{
+        val oneCellIsOneChar: List<List<String>> =(0).rangeTo(dimension.x-1).map(fun(row:Int): List<String> {
             val x2 = (0).rangeTo(dimension.y-1).map(fun(col:Int): String {
                 if(this.pacman?.position()?.x == row && this.pacman?.position()?.y == col){
                     return pacman?.facing()?.pacManRepresentation()!!
                 }
                 return "."
             })
-            return x2.joinToString(" ")
+            return x2
         })
 
-        return x.toTypedArray()
+        val cellWithSpaces = oneCellIsOneChar.map { i->i.joinToString(" ") }
+
+        return cellWithSpaces.toTypedArray()
     }
 
 }
