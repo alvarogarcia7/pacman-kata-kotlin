@@ -42,6 +42,29 @@ class RepresentationTest {
 
         Assert.assertArrayEquals(expected, grid.representation())
     }
+
+    @Test
+    fun `grid of 3*3 with pacman in the center looking left`() {
+        var grid = Grid(Dimension(3, 3))
+        val pacman = Pacman(Position(1, 1), Direction.LEFT, grid)
+        val expected = arrayOf(
+                ". . .",
+                ". > .",
+                ". . .")
+
+        Assert.assertArrayEquals(expected, grid.representation())
+    }
+    @Test
+    fun `grid of 3*3 with pacman in the center looking right`() {
+        var grid = Grid(Dimension(3, 3))
+        val pacman = Pacman(Position(1, 1), Direction.RIGHT, grid)
+        val expected = arrayOf(
+                ". . .",
+                ". < .",
+                ". . .")
+
+        Assert.assertArrayEquals(expected, grid.representation())
+    }
 }
 
 
