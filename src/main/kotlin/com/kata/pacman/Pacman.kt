@@ -3,21 +3,26 @@ package com.kata.pacman
 enum class Direction {
     LEFT {
         override fun move(): Position = Position(-1,0)
+        override fun pacManRepresentation(): String = ">"
     },
 
     UP {
         override fun move(): Position = Position(0,1)
+        override fun pacManRepresentation(): String = "v"
     },
 
     DOWN {
         override fun move(): Position = Position(0,-1)
+        override fun pacManRepresentation(): String = "^"
     },
 
     RIGHT {
         override fun move(): Position = Position(1,0)
+        override fun pacManRepresentation(): String = "<"
     };
 
     abstract fun move() : Position
+    abstract fun pacManRepresentation() : String
 }
 
 data class Position(var x: Int, var y: Int) {
@@ -36,10 +41,11 @@ data class Position(var x: Int, var y: Int) {
 
 class Grid(val dimension: Dimension) {
 
+    var pacman: Pacman? = null
+
     fun  simplify(position: Position): Position {
         return wrapY(wrapX(position, dimension.x), dimension.y)
     }
-
 
     private fun wrapX(position: Position, threshold: Int): Position {
         if (position.beforeTheX()) {
@@ -64,11 +70,38 @@ class Grid(val dimension: Dimension) {
 
     private fun decreaseYAxis(position: Position): Position = position.copy(y = position.y - dimension.y)
     private fun increaseYAxis(position: Position): Position = position.copy(y = position.y + dimension.y)
+
+    fun representation(): Array<String> {
+
+        val x =(0).rangeTo(dimension.x-1).map(fun(row:Int): String{
+            val x2 = (0).rangeTo(dimension.y-1).map(fun(col:Int): String {
+                if(this.pacman?.position()?.x == row && this.pacman?.position()?.y == col){
+                    return pacman?.facing()?.pacManRepresentation()!!
+                }
+                return "."
+            })
+            return x2.joinToString(" ")
+        })
+
+        return x.toTypedArray()
+    }
+
 }
 
 class Dimension(val x: Int, val y: Int)
 
-class Pacman(private var position: Position, private var direction: Direction, private var grid: Grid) {
+class Pacman {
+
+    private var position: Position
+    private var direction: Direction
+    private var grid: Grid
+
+    constructor(position: Position, direction: Direction, grid: Grid) {
+        this.position = position
+        this.direction = direction
+        this.grid = grid
+        grid.pacman = this
+    }
 
     fun move() {
         position = grid.simplify(position.add(direction.move()))
