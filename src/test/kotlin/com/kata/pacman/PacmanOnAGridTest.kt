@@ -9,6 +9,11 @@ class PacmanOnAGridTest {
     private val at = ::Position
 
     @Test
+    fun `moves from right to left`() {
+        movePacman(at(0, 0), facing(Direction.RIGHT), endsUp(at(1, 0)))
+    }
+
+    @Test
     fun `wrap the position - from rightmost to leftmost`() {
         movePacman(at(1, 0), facing(Direction.RIGHT), endsUp(at(0, 0)))
     }
